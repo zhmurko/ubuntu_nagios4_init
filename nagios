@@ -6,9 +6,10 @@
 #		Nagios version by Sean Finney <seanius@debian.org> and probably others
 #		nagios2 version by Marc Haber <mh+debian-packages@zugschlus.de>
 #		nagios3 version by Alexander Wirt <formorer@debian.org>
+#		nagios4 version by Stephen Gibson <stephen.gibson@curvedental.com>
 
 ### BEGIN INIT INFO
-# Provides:          nagios3
+# Provides:          nagios4
 # Required-Start:    $local_fs $remote_fs $syslog $named $network $time
 # Required-Stop:     $local_fs $remote_fs $syslog $named $network
 # Should-Start:      
@@ -49,7 +50,7 @@ log()
 }
 
 check_started () {
-	#nagios3-core can be installed without -cgi
+	#nagios4-core can be installed without -cgi
 	if [ -e $CGICFG ];
 	then
 		check_cmd=$(get_config nagios_check_command $CGICFG)
