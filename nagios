@@ -118,7 +118,7 @@ check_named_pipe () {
 }
 
 if [ ! -f "$NAGIOSCFG" ]; then
-  log_failure_msg "There is no configuration file for Nagios 3."
+  log_failure_msg "There is no configuration file for Nagios 4."
   exit 6
 fi
 
@@ -128,7 +128,7 @@ THEPIDFILE=$(get_config "lock_file")
 start () {
 
   if [ "$ENABLED" = "no"  ]; then
-	  log_warning_msg "Not starting Nagios - set ENABLED to yes in /etc/defrault/nagios"
+	  log_warning_msg "Not starting Nagios - set ENABLED to yes in /etc/default/nagios"
 	  exit 0
   fi
 
