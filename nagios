@@ -1,4 +1,4 @@
-#! /bin/sh
+#! /bin/bash
 #		Written by Miquel van Smoorenburg <miquels@cistron.nl>.
 #		Modified for Debian GNU/Linux
 #		by Ian Murdock <imurdock@gnu.ai.mit.edu>.
@@ -50,18 +50,8 @@ log()
 }
 
 check_started () {
-	#nagios4-core can be installed without -cgi
-	if [ -e $CGICFG ];
-	then
-		check_cmd=$(get_config nagios_check_command $CGICFG)
-		if [ ! "$check_cmd" ]; then
-			log 6 "unable to determine nagios_check_command from $CGICFG!" 
-			return 6
-		fi
-	else 
-		#use hardcoded default version
-		check_cmd="/usr/lib/nagios/plugins/check_nagios /var/cache/nagios/status.dat 5 '/usr/local/nagios/bin/nagios'"
-	fi
+        #use hardcoded default version
+        check_cmd="/usr/local/nagios/libexec/check_nagios /var/cache/nagios/status.dat 5 '/usr/local/nagios/bin/nagios'"
 
   eval $check_cmd >/dev/null
 		
