@@ -7,6 +7,7 @@ fi
 apt-get update
 apt-get install -y wget build-essential php5-gd wget libgd2-xpm libgd2-xpm-dev libapache2-mod-php5 apache2-utils daemon
 useradd nagios
+groupadd nagcmd
 usermod -a -G nagcmd nagios
 wget http://prdownloads.sourceforge.net/sourceforge/nagios/nagios-4.0.2.tar.gz
 wget https://www.nagios-plugins.org/download/nagios-plugins-1.5.tar.gz
