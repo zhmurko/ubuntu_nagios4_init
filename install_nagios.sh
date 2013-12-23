@@ -29,7 +29,7 @@ chmod 777 /usr/local/nagios/var/rw/ -R
 htpasswd -c /usr/local/nagios/etc/htpasswd.users nagiosadmin
 cd /etc/init.d/
 rm nagios
-wget https://raw.github.com/stephengibsoncurve/ubuntu_nagios4_init/master/nagios
+wget https://raw.github.com/curvedental/ubuntu_nagios4_init/master/nagios
 chmod 755 nagios
 /etc/init.d/apache2 restart
 /etc/init.d/nagios restart
