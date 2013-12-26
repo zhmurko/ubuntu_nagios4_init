@@ -5,15 +5,17 @@ if [[ $EUID -ne 0 ]]; then
    exit 1
 fi
 apt-get update
-apt-get install -y wget build-essential php5-gd wget libgd2-xpm libgd2-xpm-dev libapache2-mod-php5 apache2-utils daemon
+apt-get install -y wget build-essential php5-gd wget libgd2-xpm libgd2-xpm-dev libapache2-mod-php5 apache2-utils daemon libssl-dev
 useradd nagios
 groupadd nagcmd
 usermod -a -G nagcmd nagios
 usermod -a -G nagcmd www-data
 wget http://prdownloads.sourceforge.net/sourceforge/nagios/nagios-4.0.2.tar.gz
 wget https://www.nagios-plugins.org/download/nagios-plugins-1.5.tar.gz
+wget https://github.com/curvedental/ubuntu_nagios4_init/raw/master/nrpe.tar.gz
 tar -xzf nagios-4.0.2.tar.gz
 tar -xzf nagios-plugins-1.5.tar.gz
+tar -xzf nrpe.tar.gz
 cd nagios-4.0.2/
 ./configure --with-nagios-group=nagios --with-command-group=nagcmd --with-mail=/usr/bin/sendmail
 make all
@@ -25,6 +27,10 @@ make install-webconf
 cd ../nagios-plugins-1.5
 ./configure --with-nagios-user=nagios --with-nagios-group=nagios
 make
+make install
+cd ../nrpe-2.15
+./configure --with-ssl=/usr/bin/openssl --with-ssl-lib=/usr/lib/x86_64-linux-gnu
+make all
 make install
 mkdir /usr/local/nagios/var/rw
 chmod 777 /usr/local/nagios/var/rw/ -R
