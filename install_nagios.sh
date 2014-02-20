@@ -12,7 +12,7 @@ usermod -a -G nagcmd nagios
 usermod -a -G nagcmd www-data
 wget http://prdownloads.sourceforge.net/sourceforge/nagios/nagios-4.0.2.tar.gz
 wget https://www.nagios-plugins.org/download/nagios-plugins-1.5.tar.gz
-wget https://github.com/curvedental/ubuntu_nagios4_init/raw/master/nrpe.tar.gz
+wget https://github.com/zhmurko/ubuntu_nagios4_init/raw/master/nrpe.tar.gz
 tar -xzf nagios-4.0.2.tar.gz
 tar -xzf nagios-plugins-1.5.tar.gz
 tar -xzf nrpe.tar.gz
@@ -37,7 +37,7 @@ chmod 777 /usr/local/nagios/var/rw/ -R
 htpasswd -c /usr/local/nagios/etc/htpasswd.users nagiosadmin
 cd /etc/init.d/
 rm nagios
-wget https://raw.github.com/curvedental/ubuntu_nagios4_init/master/nagios
+wget https://raw.github.com/zhmurko/ubuntu_nagios4_init/master/nagios
 chmod 755 nagios
 /etc/init.d/apache2 restart
 /etc/init.d/nagios restart
